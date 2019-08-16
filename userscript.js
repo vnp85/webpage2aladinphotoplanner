@@ -165,6 +165,13 @@
 
     });
     if (allowed){
+        // facebook does weird, very weird things
+        //   to intervals and timeouts,
+        //   so this won't keep running in facebook
+        // I have figured out a way to circumvent it,
+        //   but sorry, not publishing it
         setInterval(theAladinExtension, 1000);
     }
+    // we may need a globally accessible function
+    window.funcTheAladinExtension = theAladinExtension;
 })();
