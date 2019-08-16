@@ -18,6 +18,13 @@
         "aladin"
     ];
 
+    var runIfURLContains = [
+        "tavcso.hu",
+        "asztrofoto.hu",
+        "facebook.com",
+        "csillagaszat.hu"
+    ];
+
     var tagsToCheck = [
       "p", "span", "div",
       "h1", "h2", "h3",
@@ -157,7 +164,12 @@
         }
     };
 
-    var allowed = true;
+    var allowed = false;
+    runIfURLContains.forEach(function (u){
+      if (document.URL.indexOf(u) > -1){
+          allowed = true;
+      }
+    });
     dontRunIfURLContains.forEach(function (u){
       if (document.URL.indexOf(u) > -1){
           allowed = false;
