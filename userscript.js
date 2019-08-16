@@ -88,10 +88,15 @@
             // has embedded divs, leave the node alone
             return ;
         }
+        if (s2.toLowerCase().indexOf(String.fromCharCode(60)+'a ') > -1){
+            // has embedded anchors, leave them
+            return ;
+        }
         if (s2.toLowerCase().indexOf(String.fromCharCode(60)+'svg') > -1){
             //should leave nodes with SVGs in them alone
             return ;
         }
+
         var s = " " + s2 + " ";
         catalogs.forEach(function (k){
             for (j=0; j<10; j++){
@@ -165,6 +170,7 @@
     };
 
     var allowed = false;
+    console.log(document.URL);
     runIfURLContains.forEach(function (u){
       if (document.URL.indexOf(u) > -1){
           allowed = true;
