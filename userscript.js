@@ -105,6 +105,7 @@
             }
         });
         var lnbr = " %linebreak%";
+        var fingerprint = 'seen on aladin2photoplanner';
         s = s.split(String.fromCharCode(60)+'br'+String.fromCharCode(62)).join(lnbr);
         s = s.split(String.fromCharCode(60)+'br '+String.fromCharCode(62)).join(lnbr);
         s = s.split(String.fromCharCode(60)+'br/'+String.fromCharCode(62)).join(lnbr);
@@ -128,7 +129,7 @@
                    var n = w*1;
                    if (n === n){
                        // n is a number, see Erdos Pal
-                       var lead = '<a title="seen on aladin2photoplanner" href="'+getURL(catalogs[j], n)+'" target="_blank">';
+                       var lead = '<a title="'+fingerprint+'" href="'+getURL(catalogs[j], n)+'" target="_blank">';
                        var tail = '</a>';
                        s[i] = lead+s[i];
                        s[i] = s[i].replace(lead+'(', '('+lead);
@@ -148,7 +149,7 @@
         s = s.join(" ").trim();
         var br = String.fromCharCode(60)+'br'+String.fromCharCode(62);
         s = s.split(lnbr.trim()).join(br).split(' '+br).join(br);
-        if (s != s2){
+        if (s.split(fingerprint).length != s2.split(fingerprint).length){
             e.innerHTML = s;
         }
     };
