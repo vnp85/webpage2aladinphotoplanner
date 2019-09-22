@@ -52,7 +52,23 @@
         return 'https://csillagtura.ro/aladin/#'+cat+num;
     }
 
+    function isOrAreParentsContentEditable(n){
+        while (n){
+            if (n.contentEditable){
+                return true;
+            }
+            if (n.parentNode){
+                n = n.parentNode;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
     function isTheNodeAChildOfAForbiddenElement(n){
+        if (isOrAreParentsContentEditable(n)){
+            return true;
+        }
         var c = n;
         while (c){
             if (!c.tagName){
